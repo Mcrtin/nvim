@@ -76,10 +76,6 @@
         action = "keymaps";
         options.desc = "Keymaps";
       };
-      "<leader>f " = {
-        action = "harpoon";
-        options.desc = "harpoon";
-      };
       "<leader>fM" = {
         action = "man_pages";
         options.desc = "Man pages";
