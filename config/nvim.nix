@@ -50,6 +50,8 @@
   globals.mapleader = " ";
   clipboard.providers.wl-copy.enable = true;
 
+  diagnostics.update_in_insert = false;
+
   plugins = {
     lualine = {
       enable = true;

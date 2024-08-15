@@ -14,9 +14,11 @@
 
   plugins.yazi = {
     enable = true;
-    open_for_directories = true;
-    use_ya_for_events_reading = true;
-    use_yazi_client_id_flag = true;
+    settings = {
+      open_for_directories = true;
+      use_ya_for_events_reading = true;
+      use_yazi_client_id_flag = true;
+    };
   };
 
   plugins.nvim-tree = {

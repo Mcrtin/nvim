@@ -1,8 +1,7 @@
 {
   plugins.bufferline = {
     enable = true;
-    diagnostics = "nvim_lsp";
-    diagnosticsUpdateInInsert = false;
+    settings.options.diagnostics = "nvim_lsp";
   };
 
   keymaps = [
