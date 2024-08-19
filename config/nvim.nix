@@ -62,8 +62,6 @@
 
     firenvim.enable = true; # firefox integration
 
-    image.enable = true;
-
     auto-save = {
       enable = true;
       settings = {
