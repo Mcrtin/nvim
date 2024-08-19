@@ -119,11 +119,10 @@
       ];
     };
     servers = {
-      # Average webdev LSPs
       tsserver.enable = true; # TS/JS
-      cssls.enable = true; # CSS
+      # cssls.enable = true; # CSS
       tailwindcss.enable = true; # TailwindCSS
-      html.enable = true; # HTML
+      # html.enable = true; # HTML
       astro.enable = true; # AstroJS
       phpactor.enable = true; # PHP
       svelte.enable = false; # Svelte
