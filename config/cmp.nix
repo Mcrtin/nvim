@@ -141,22 +141,22 @@ in {
     {
       mode = "i";
       key = "<C-K>";
-      action = "<cmd>lua function() require(\"luasnip\".expand() end";
+      action = "<cmd>lua function() require(\"luasnip\".expand() end<cr>";
     }
     {
       mode = ["i" "s"];
       key = "<C-L>";
-      action = "<cmd>lua function() require(\"luasnip\".jump(1) end";
+      action = "<cmd>lua function() require(\"luasnip\".jump(1) end<cr>";
     }
     {
       mode = ["i" "s"];
       key = "<C-J>";
-      action = "<cmd>lua function() require(\"luasnip\".jump(-1) end";
+      action = "<cmd>lua function() require(\"luasnip\".jump(-1) end<cr>";
     }
     {
       mode = ["i" "s"];
       key = "<C-E>";
-      action = "<cmd>lua function() if ls.choice_active() then ls.change_choice(1) end end";
+      action = "<cmd>lua function() if ls.choice_active() then ls.change_choice(1) end end<cr>";
     }
   ];
 }
