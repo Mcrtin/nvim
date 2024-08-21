@@ -20,7 +20,7 @@
       }
       {
         __unkeyed-1 = "<leader>i";
-        desc = "+ui";
+        desc = "+ui"; # TODO: add keys to ui
       }
       {
         __unkeyed-1 = "<leader>w";
@@ -29,6 +29,10 @@
       {
         __unkeyed-1 = "<leader><Tab>";
         desc = "+tab";
+      }
+      {
+        __unkeyed-1 = "<leader>h";
+        desc = "+harpoon";
       }
       {
         __unkeyed-1 = "<leader>b";
