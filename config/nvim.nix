@@ -55,7 +55,7 @@
   plugins = {
     lualine = {
       enable = true;
-      globalstatus = true;
+      settings.options.globalstatus = true;
     };
 
     presence-nvim.enable = true; # Discord
@@ -186,6 +186,8 @@
 
     wakatime.enable = true; # https://wakatime.com/settings/api-key
 
+    hex.enable = true;
+
     illuminate = {
       enable = true;
       underCursor = false;
@@ -205,7 +207,7 @@
 
     hardtime = {
       enable = true;
-      disableMouse = false;
+      settings.disable_mouse = false;
     };
 
     harpoon = {
