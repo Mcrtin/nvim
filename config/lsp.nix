@@ -186,9 +186,10 @@
   };
 
   plugins.conform-nvim = {
+    #TODO: use lsp
     enable = true;
     settings = {
-      format_by_ft = {
+      formatters_by_ft = {
         html = [["prettierd" "prettier"]];
         css = [["prettierd" "prettier"]];
         javascript = [["prettierd" "prettier"]];
@@ -204,7 +205,10 @@
         sh = ["shfmt"];
       };
       notify_on_error = true;
-      format_on_save = {};
+      format_on_save = {
+        timeout_ms = 500;
+        lsp_format = "fallback";
+      };
     };
   };
   keymaps = [
