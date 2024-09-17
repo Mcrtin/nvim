@@ -60,8 +60,6 @@
 
     presence-nvim.enable = true; # Discord
 
-    firenvim.enable = true; # firefox integration
-
     auto-save = {
       enable = true;
       settings = {
