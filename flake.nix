@@ -51,8 +51,6 @@
           full = fullNvim;
           lite = liteNvim;
         };
-
-        overlays.additions = final: _prev: {nixvim={full = fullNvim; lite = liteNvim;};} final.pkgs; # TODO:
       };
     };
 }
