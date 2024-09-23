@@ -58,8 +58,6 @@
       settings.options.globalstatus = true;
     };
 
-    presence-nvim.enable = true; # Discord
-
     auto-save = {
       enable = true;
       settings = {
@@ -114,12 +112,6 @@
       render = "minimal";
     };
 
-    fidget = {
-      enable = true;
-      progress.display.progressIcon.pattern = "meter";
-      notification.window.winblend = 0;
-    };
-
     trouble = {
       enable = true;
       settings.autoclose = true;
@@ -130,9 +122,7 @@
       settings.highlight.backdrop = false;
     };
 
-    comment = {
-      enable = true;
-    };
+    comment.enable = true;
 
     nvim-colorizer.enable = true; # color colorcodes
 
@@ -156,13 +146,9 @@
       };
     };
 
-    rainbow-delimiters.enable = true;
-
     surround.enable = true;
 
-    telescope = {
-      enable = true;
-    };
+    telescope.enable = true;
 
     todo-comments = {
       enable = true;
@@ -181,8 +167,6 @@
 
     indent-blankline.enable = true;
     intellitab.enable = true;
-
-    wakatime.enable = true; # https://wakatime.com/settings/api-key
 
     hex.enable = true;
 
@@ -203,11 +187,6 @@
     };
     lastplace.enable = true;
 
-    hardtime = {
-      enable = true;
-      settings.disable_mouse = false;
-    };
-
     harpoon = {
       enable = true;
       enableTelescope = true;
@@ -223,17 +202,12 @@
         };
       };
     };
-    markdown-preview = {
-      enable = true;
-      settings = {
-        browser = "floorp";
-        theme = "dark";
-      };
-    };
+
     project-nvim = {
       enable = true;
       enableTelescope = true;
     };
+
     toggleterm = {
       enable = true;
       settings = {

@@ -19,6 +19,14 @@
       };
     };
 
+    markdown-preview = {
+      enable = true;
+      settings = {
+        browser = "floorp";
+        theme = "dark";
+      };
+    };
+
     openscad = {
       enable = true;
       keymaps.enable = true;
