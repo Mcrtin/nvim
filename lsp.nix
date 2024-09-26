@@ -31,6 +31,7 @@
       enable = true;
       keymaps.enable = true;
     };
+
     lspsaga = {
       enable = true;
       lightbulb.virtualText = false;
@@ -126,19 +127,14 @@
         }
       ];
     };
+
     servers = {
       tsserver.enable = true; # TS/JS
       cssls.enable = true; # CSS
-      tailwindcss.enable = true; # TailwindCSS
       html.enable = true; # HTML
-      astro.enable = true; # AstroJS
-      phpactor.enable = true; # PHP
-      svelte.enable = false; # Svelte
-      vuels.enable = false; # Vue
       pyright.enable = true; # Python
       marksman.enable = true; # Markdown
       nil-ls.enable = true; # Nix
-      dockerls.enable = true; # Docker
       bashls.enable = true; # Bash
       clangd.enable = true; # C/C++
       csharp-ls.enable = true; # C#
@@ -188,9 +184,6 @@
       lua = ["selene"];
       python = ["flake8"];
       javascript = ["eslint_d"];
-      javascriptreact = ["eslint_d"];
-      typescript = ["eslint_d"];
-      typescriptreact = ["eslint_d"];
       json = ["jsonlint"];
       java = ["checkstyle"];
     };
@@ -203,9 +196,6 @@
         html = ["prettierd"];
         css = ["prettierd"];
         javascript = ["prettierd"];
-        javascriptreact = ["prettierd"];
-        typescript = ["prettierd"];
-        typescriptreact = ["prettierd"];
         java = ["google-java-format"];
         python = ["black"];
         lua = ["stylua"];
