@@ -42,6 +42,8 @@
       };
     };
     lsp-lines.enable = true;
+    compiler.enable = true;
+    overseer.enable = true;
   };
 
   autoCmd = [
@@ -156,6 +158,35 @@
     };
   };
   extraPackages = with pkgs; [
+    # for compiler
+    gcc
+    binutils
+    dotnetRuntime
+    dotnetSdk
+    aspnetCoreRuntime
+    mono
+    openjdk
+    dart
+    kotlin
+    elixir
+    nodejs
+    npm
+    typescript
+    make
+    go
+    nasm
+    r
+    nuitka
+    python3
+    ruby
+    perl
+    lua
+    pyinstaller
+    swift
+    flutter
+    gccFortran
+    fortranFpm
+
     # for vimtex
     biber
 
@@ -212,6 +243,29 @@
     };
   };
   keymaps = [
+    # compiler
+    {
+      mode = "n";
+      key = "<leader>cc";
+      action = "<cmd>CompilerOpen<cr>";
+      options.silent = true;
+      options.desc = "Open compiler";
+    }
+    {
+      mode = "n";
+      key = "<leader>cC";
+      action = "<cmd>CompilerStop<cr><cmd>CompilerRedo<cr>";
+      options.silent = true;
+      options.desc = "Redo last compiler option";
+    }
+    {
+      mode = "n";
+      key = "<leader>c<C-c>";
+      action = "<cmd>CompilerToggleResults<cr>";
+      options.silent = true;
+      options.desc = "Toggle compiler results";
+    }
+
     {
       mode = "n";
       key = "<leader>cp";
