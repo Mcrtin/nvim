@@ -92,26 +92,10 @@
         action = "resume";
         options.desc = "Resume";
       };
+      "<leader>fp" = {
+        action = "projects";
+        options.desc = "Projects";
+      };
     };
   };
-
-  keymaps = [
-    {
-      mode = "n";
-      key = "<leader>fp";
-      action = "<cmd>Telescope projects<CR>";
-      options = {
-        desc = "Projects";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader>fd";
-      action = "<cmd>Telescope diagnostics bufnr=0<cr>";
-      options = {
-        desc = "Document diagnostics";
-      };
-    }
-  ];
 }

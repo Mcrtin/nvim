@@ -1,5 +1,6 @@
 {
   imports = [
+    ./generalKeybinds.nix
     ./session.nix
     ./alpha.nix
     ./cmp.nix
@@ -53,6 +54,17 @@
   diagnostics.update_in_insert = false;
 
   plugins = {
+    comment.enable = true;
+    sleuth.enable = true;
+    surround.enable = true;
+    indent-blankline.enable = true;
+    intellitab.enable = true;
+    lastplace.enable = true;
+    hex.enable = true;
+    telescope.enable = true;
+    nvim-colorizer.enable = true; # color colorcodes
+    nvim-autopairs.enable = true;
+
     lualine = {
       enable = true;
       settings.options.globalstatus = true;
@@ -102,10 +114,6 @@
         '';
     };
 
-    nvim-autopairs = {
-      enable = true;
-    };
-
     notify = {
       enable = true;
       timeout = 1000;
@@ -119,19 +127,8 @@
 
     flash = {
       enable = true;
-      settings.highlight.backdrop = false;
+      settings.modes.char.enabled = false;
     };
-
-    comment.enable = true;
-
-    nvim-colorizer.enable = true; # color colorcodes
-
-    gitsigns = {
-      enable = true;
-      settings.current_line_blame = false;
-    };
-
-    sleuth.enable = true;
 
     noice = {
       enable = true;
@@ -145,10 +142,6 @@
         progress.enabled = false;
       };
     };
-
-    surround.enable = true;
-
-    telescope.enable = true;
 
     todo-comments = {
       enable = true;
@@ -165,11 +158,6 @@
       settings.SetFocusWhenToggle = true;
     };
 
-    indent-blankline.enable = true;
-    intellitab.enable = true;
-
-    hex.enable = true;
-
     illuminate = {
       enable = true;
       underCursor = false;
@@ -185,7 +173,6 @@
         "reason"
       ];
     };
-    lastplace.enable = true;
 
     harpoon = {
       enable = true;
@@ -233,298 +220,20 @@
   };
 
   keymaps = [
+    #Trouble
     {
       key = "<leader>xq";
       action = "<cmd>TodoTrouble toggle<cr>";
       options.silent = true;
     }
+
+    # AutoSave
     {
-      mode = "n";
-      key = "<leader>cp";
-      action = "<cmd>MarkdownPreview<cr>";
-      options = {
-        desc = "Markdown Preview";
-      };
-    }
-    # misc
-    {
-      mode = "v";
-      key = "J";
-      action = ":m '>+1<CR>gv=gv";
-      options = {
-        silent = true;
-        desc = "Move up when line is highlighted";
-      };
+      key = "<leader>a";
+      action = "<cmd>ASToggle<CR>";
+      options.desc = "Toggle auto save";
     }
 
-    {
-      mode = "v";
-      key = "K";
-      action = ":m '<-2<CR>gv=gv";
-      options = {
-        silent = true;
-        desc = "Move down when line is highlighted";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "J";
-      action = "mzJ`z";
-      options = {
-        silent = true;
-        desc = "Allow cursor to stay in the same place after appeding to current line";
-      };
-    }
-
-    {
-      mode = "v";
-      key = "<";
-      action = "<gv";
-      options = {
-        silent = true;
-        desc = "Indent while remaining in visual mode.";
-      };
-    }
-
-    {
-      mode = "v";
-      key = ">";
-      action = ">gv";
-      options = {
-        silent = true;
-        desc = "Indent while remaining in visual mode.";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<C-d>";
-      action = "<C-d>zz";
-      options = {
-        silent = true;
-        desc = "Allow <C-d> and <C-u> to keep the cursor in the middle";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<C-u>";
-      action = "<C-u>zz";
-      options = {
-        desc = "Allow C-d and C-u to keep the cursor in the middle";
-      };
-    }
-
-    # Remap for dealing with word wrap and adding jumps to the jumplist.
-    {
-      mode = "n";
-      key = "j";
-      action.__raw = "
-        [[(v:count > 1 ? 'm`' . v:count : 'g') . 'j']]
-      ";
-      options = {
-        expr = true;
-        desc = "Remap for dealing with word wrap and adding jumps to the jumplist.";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "k";
-      action.__raw = "
-        [[(v:count > 1 ? 'm`' . v:count : 'g') . 'k']]
-      ";
-      options = {
-        expr = true;
-        desc = "Remap for dealing with word wrap and adding jumps to the jumplist.";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "n";
-      action = "nzzzv";
-      options = {
-        desc = "Allow search terms to stay in the middle";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "N";
-      action = "Nzzzv";
-      options = {
-        desc = "Allow search terms to stay in the middle";
-      };
-    }
-
-    # Paste stuff without saving the deleted word into the buffer
-    {
-      mode = "x";
-      key = "<leader>p";
-      action = "\"_dP";
-      options = {
-        desc = "Deletes to void register and paste over";
-      };
-    }
-
-    # Copy stuff to system clipboard with <leader> + y or just y to have it just in vim
-    {
-      mode = ["n" "v"];
-      key = "<leader>y";
-      action = "\"+y";
-      options = {
-        desc = "Copy to system clipboard";
-      };
-    }
-
-    {
-      mode = ["n" "v"];
-      key = "<leader>Y";
-      action = "\"+Y";
-      options = {
-        desc = "Copy to system clipboard";
-      };
-    }
-
-    # Delete to void register
-    {
-      mode = ["n" "v"];
-      key = "<leader>D";
-      action = "\"_d";
-      options = {
-        desc = "Delete to void register";
-      };
-    } # ui
-    {
-      mode = "n";
-      key = "<leader>ml";
-      action = ":lua ToggleLineNumber()<cr>";
-      options = {
-        silent = true;
-        desc = "Toggle Line Numbers";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader>mL";
-      action = ":lua ToggleRelativeLineNumber()<cr>";
-      options = {
-        silent = true;
-        desc = "Toggle Relative Line Numbers";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader>mw";
-      action = ":lua ToggleWrap()<cr>";
-      options = {
-        silent = true;
-        desc = "Toggle Line Wrap";
-      };
-    }
-    # Windows
-    {
-      mode = "n";
-      key = "<leader>ww";
-      action = "<C-W>p";
-      options = {
-        silent = true;
-        desc = "Other window";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader>wd";
-      action = "<C-W>c";
-      options = {
-        silent = true;
-        desc = "Delete window";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader>w-";
-      action = "<C-W>s";
-      options = {
-        silent = true;
-        desc = "Split window below";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader>w|";
-      action = "<C-W>v";
-      options = {
-        silent = true;
-        desc = "Split window right";
-      };
-    } # Tabs
-    {
-      mode = "n";
-      key = "<leader><tab>l";
-      action = "<cmd>tablast<cr>";
-      options = {
-        silent = true;
-        desc = "Last tab";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader><tab>f";
-      action = "<cmd>tabfirst<cr>";
-      options = {
-        silent = true;
-        desc = "First Tab";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader><tab><tab>";
-      action = "<cmd>tabnew<cr>";
-      options = {
-        silent = true;
-        desc = "New Tab";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader><tab>]";
-      action = "<cmd>tabnext<cr>";
-      options = {
-        silent = true;
-        desc = "Next Tab";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader><tab>d";
-      action = "<cmd>tabclose<cr>";
-      options = {
-        silent = true;
-        desc = "Close tab";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader><tab>[";
-      action = "<cmd>tabprevious<cr>";
-      options = {
-        silent = true;
-        desc = "Previous Tab";
-      };
-    }
     # undotree
     {
       mode = "n";
@@ -532,55 +241,7 @@
       action = "<cmd>UndotreeToggle<CR>";
       options.desc = "Toggle Undotree";
     }
-    # gitsigns
-    {
-      mode = "n";
-      key = "<leader>gd";
-      action = "<cmd>lua require('gitsigns').diffthis()<CR>";
-      options.desc = "Git Diff";
-    }
-    {
-      mode = "n";
-      key = "<leader>gr";
-      action = "<cmd>lua require('gitsigns').refresh()<CR>";
-      options.desc = "Git Refresh";
-    }
-    {
-      mode = "n";
-      key = "<leader>gb";
-      action = "<cmd>lua require('gitsigns').blame_line()<CR>";
-      options.desc = "Git Blame";
-    }
-    {
-      mode = "n";
-      key = "<leader>ghv";
-      action = "<cmd>lua require('gitsigns').select_hunk()<CR>";
-      options.desc = "Git Hunk Visual Select";
-    }
-    {
-      mode = "n";
-      key = "<leader>ghp";
-      action = "<cmd>lua require('gitsigns').preview_hunk()<CR>";
-      options.desc = "Git Hunk Preview";
-    }
-    {
-      mode = "n";
-      key = "<leader>ghr";
-      action = "<cmd>lua require('gitsigns').reset_hunk()<CR>";
-      options.desc = "Git Hunk Reset";
-    }
-    {
-      mode = "n";
-      key = "<leader>ghs";
-      action = "<cmd>lua require('gitsigns').stage_hunk()<CR>";
-      options.desc = "Git Hunk Stage";
-    }
-    {
-      mode = "n";
-      key = "<leader>ghu";
-      action = "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>";
-      options.desc = "Git Hunk Undo Stage";
-    }
+
     # Trouble
     {
       mode = "n";
@@ -621,6 +282,7 @@
       action = "<cmd>Trouble qflist toggle<cr>";
       options.desc = "Quickfix List (Trouble)";
     }
+
     # flash
     {
       key = "s";
@@ -646,61 +308,6 @@
       key = "<c-s>";
       mode = "c";
       action = "<cmd>lua require(\"flash\").toggle()<cr>";
-    }
-
-    # AutoSave
-
-    {
-      key = "<leader>ta";
-      action = "<cmd>ASToggle<CR>";
-    }
-
-    # Telescope bindings
-
-    {
-      action = "<cmd>Telescope live_grep<CR>";
-      key = "<leader>fw";
-    }
-    {
-      action = "<cmd>Telescope find_files<CR>";
-      key = "<leader>ff";
-    }
-    {
-      action = "<cmd>Telescope git_commits<CR>";
-      key = "<leader>fg";
-    }
-    {
-      action = "<cmd>Telescope oldfiles<CR>";
-      key = "<leader>fo";
-    }
-    {
-      action = "<cmd>Telescope help_tags<CR>";
-      key = "<leader>fh";
-    }
-    {
-      action = "<cmd>Telescope man_pages<CR>";
-      key = "<leader>fi";
-    }
-    {
-      action = "<cmd>Telescope marks<CR>";
-      key = "<leader>fm";
-    }
-    {
-      action = "<cmd>Telescope lsp_definitions<CR>";
-      key = "<leader>fd";
-    }
-
-    # Notify bindings
-
-    {
-      mode = "n";
-      key = "<leader>n";
-      action = ''
-        <cmd>lua require("notify").dismiss({ silent = true, pending = true })<cr>
-      '';
-      options = {
-        desc = "Dismiss All Notifications";
-      };
     }
   ];
 }
