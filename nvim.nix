@@ -76,9 +76,7 @@
         enabled = true;
         execution_message.enabled = false;
         condition =
-          /*
-          lua
-          */
+          # lua
           ''
             function(buf)
                 local m = vim.api.nvim_get_mode().mode
@@ -104,9 +102,7 @@
     nvim-ufo = {
       enable = true;
       providerSelector =
-        /*
-        lua
-        */
+        # lua
         ''
           function(bufnr, filetype, buftype)
               return {'treesitter', 'indent'}
