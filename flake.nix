@@ -29,11 +29,11 @@
         nixvim' = nixvim.legacyPackages.${system};
         fullModule = {
           inherit pkgs;
-          module = import ./config/full.nix;
+          module = import ./full.nix;
         };
         liteModule = {
           inherit pkgs;
-          module = import ./config/lite.nix;
+          module = import ./lite.nix;
         };
         fullNvim = nixvim'.makeNixvimWithModule fullModule;
         liteNvim = nixvim'.makeNixvimWithModule liteModule;
