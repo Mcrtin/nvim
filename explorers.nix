@@ -96,12 +96,12 @@
       };
     }
     {
-      key = "<leader>cw";
+      key = "<leader><C-o>";
       action = "<cmd>Yazi cwd<cr>";
       options.desc = "Open the file manager in nvim's working directory";
     }
     {
-      key = "<c-up>";
+      key = "<leader>O";
       action = "<cmd>Yazi toggle<cr>";
       options.desc = "Resume the last yazi session";
     }

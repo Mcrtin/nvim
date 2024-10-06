@@ -44,6 +44,12 @@
     lsp-lines.enable = true;
     compiler.enable = true;
     overseer.enable = true;
+
+    # TODO: Add keybinds
+    refactoring = {
+      enable = true;
+      enableTelescope = true;
+    };
   };
 
   autoCmd = [
@@ -70,34 +76,17 @@
       };
       extra = [
         {
-          action = "<CMD>LspStop<Enter>";
-          key = "<leader>lx";
-        }
-        {
-          action = "<CMD>LspStart<Enter>";
-          key = "<leader>la";
-        }
-        {
-          action = "<CMD>LspRestart<Enter>";
-          key = "<leader>le";
-        }
-        {
-          mode = "n";
-          action = "<CMD>Lspsaga hover_doc<Enter>";
-          key = "K";
-        }
-        {
-          key = "<leader>lc";
+          key = "<leader>ca";
           action = "<cmd>Lspsaga code_action<cr>";
           options.desc = "Code Action";
         }
         {
-          key = "<leader>lo";
+          key = "<leader>co";
           action = "<cmd>Lspsaga outline<cr>";
           options.desc = "Outline";
         }
         {
-          key = "<leader>lr";
+          key = "<leader>cr";
           action = "<cmd>Lspsaga rename<cr>";
           options.desc = "Rename";
         }
@@ -110,12 +99,6 @@
           key = "<leader>lp";
           action = "<cmd>Lspsaga peek_definition<cr>";
           options.desc = "Preview Definition";
-        }
-        {
-          mode = "n";
-          key = "<leader>ld";
-          options.desc = "Lsp Goto Definition";
-          action = "<cmd>Lspsaga goto_definition<CR>";
         }
         {
           key = "<leader>ls";
@@ -138,7 +121,9 @@
       marksman.enable = true; # Markdown
       nil-ls.enable = true; # Nix
       bashls.enable = true; # Bash
-      clangd.enable = true; # C/C++
+      zls.enable = true;
+      ccls.enable = true;
+      cmake.enable = true;
       csharp-ls.enable = true; # C#
       yamlls.enable = true; # YAML
       texlab.enable = true; #Tex
@@ -161,31 +146,21 @@
     # for compiler
     gcc
     binutils
-    dotnetRuntime
-    dotnetSdk
-    aspnetCoreRuntime
     mono
     openjdk
     dart
     kotlin
     elixir
     nodejs
-    npm
     typescript
-    make
     go
     nasm
-    r
-    nuitka
     python3
     ruby
     perl
     lua
-    pyinstaller
     swift
     flutter
-    gccFortran
-    fortranFpm
 
     # for vimtex
     biber
@@ -277,7 +252,7 @@
       mode = "n";
       key = "<leader>ll";
       action = "<cmd>lua require('lsp_lines').toggle()<CR>";
-      options.desc = "Toggle Lines";
+      options.desc = "Toggle lsp lines";
     }
     {
       mode = "n";
@@ -285,7 +260,7 @@
       action = "<cmd>lua require('conform').format()<cr>";
       options = {
         silent = true;
-        desc = "Format Buffer";
+        desc = "Format";
       };
     }
   ];
