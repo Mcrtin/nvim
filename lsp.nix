@@ -127,7 +127,6 @@
       zls.enable = true;
       clangd.enable = true;
       cmake.enable = true;
-      csharp_ls.enable = true; # C#
       yamlls.enable = true; # YAML
       texlab.enable = true; #Tex
 
