@@ -22,6 +22,11 @@
     };
     combinePlugins = {
       enable = true;
+      standalonePlugins = [
+        "overseer.nvim"
+        "openscad.nvim"
+        "nvim-treesitter"
+      ];
     };
   };
 
