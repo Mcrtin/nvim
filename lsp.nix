@@ -2,10 +2,15 @@
   plugins = {
     nix.enable = true;
 
-    vimtex = {
+    parinfer-rust.enable = true;
+    rustaceanvim = {
       enable = true;
-      settings.view_method = "zathura";
+      settings = {
+        server.default_settings.rust-analyzer.check.command = "clippy";
+      };
     };
+
+    vimtex.enable = true;
 
     nvim-jdtls = {
       enable = true;
@@ -19,12 +24,10 @@
       };
     };
 
+    render-markdown.enable = true;
     markdown-preview = {
       enable = true;
-      settings = {
-        browser = "floorp";
-        theme = "dark";
-      };
+      settings.browser = "firefox";
     };
 
     openscad = {
@@ -114,31 +117,24 @@
     };
 
     servers = {
-      tsserver.enable = true; # TS/JS
+      ts_ls.enable = true; # TS/JS
       cssls.enable = true; # CSS
       html.enable = true; # HTML
       pyright.enable = true; # Python
       marksman.enable = true; # Markdown
-      nil-ls.enable = true; # Nix
+      nil_ls.enable = true; # Nix
       bashls.enable = true; # Bash
       zls.enable = true;
-      ccls.enable = true;
+      clangd.enable = true;
       cmake.enable = true;
-      csharp-ls.enable = true; # C#
+      csharp_ls.enable = true; # C#
       yamlls.enable = true; # YAML
       texlab.enable = true; #Tex
 
-      lua-ls = {
+      lua_ls = {
         # Lua
         enable = true;
         settings.telemetry.enable = false;
-      };
-
-      # Rust
-      rust-analyzer = {
-        enable = true;
-        installRustc = true;
-        installCargo = true;
       };
     };
   };

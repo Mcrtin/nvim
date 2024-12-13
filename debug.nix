@@ -20,7 +20,7 @@
         dap-ui = {
           enable = true;
           floating.mappings = {
-            close = [ "<ESC>" "q" ];
+            close = ["<ESC>" "q"];
           };
         };
         dap-virtual-text.enable = true;
@@ -288,7 +288,7 @@
       };
     }
     {
-      mode = [ "n" "v" ];
+      mode = ["n" "v"];
       key = "<leader>de";
       action = "<cmd>lua require('dapui').eval()<cr>";
       options = {

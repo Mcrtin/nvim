@@ -15,6 +15,16 @@
     ./git.nix
   ];
 
+  performance = {
+    byteCompileLua = {
+      enable = true;
+      plugins = true;
+    };
+    combinePlugins = {
+      enable = true;
+    };
+  };
+
   opts = {
     number = true;
     relativenumber = true;
@@ -56,7 +66,7 @@
   plugins = {
     comment.enable = true;
     sleuth.enable = true;
-    surround.enable = true;
+    nvim-surround.enable = true;
     indent-blankline.enable = true;
     intellitab.enable = true;
     lastplace.enable = true;
@@ -64,6 +74,7 @@
     telescope.enable = true;
     nvim-colorizer.enable = true; # color colorcodes
     nvim-autopairs.enable = true;
+    web-devicons.enable = true;
 
     lualine = {
       enable = true;
@@ -74,7 +85,6 @@
       enable = true;
       settings = {
         enabled = true;
-        execution_message.enabled = false;
         condition =
           # lua
           ''
@@ -101,7 +111,7 @@
 
     nvim-ufo = {
       enable = true;
-      providerSelector =
+      settings.provider_selector =
         # lua
         ''
           function(bufnr, filetype, buftype)
@@ -216,13 +226,6 @@
   };
 
   keymaps = [
-    #Trouble
-    {
-      key = "<leader>xq";
-      action = "<cmd>TodoTrouble toggle<cr>";
-      options.silent = true;
-    }
-
     # AutoSave
     {
       key = "<leader>a";
@@ -238,7 +241,12 @@
       options.desc = "Toggle Undotree";
     }
 
-    # Trouble
+    #Trouble
+    {
+      key = "<leader>xq";
+      action = "<cmd>TodoTrouble toggle<cr>";
+      options.silent = true;
+    }
     {
       mode = "n";
       key = "<leader>xQ";
