@@ -6,8 +6,10 @@
   plugins = {
     fidget = {
       enable = true;
-      progress.display.progressIcon.pattern = "meter";
-      notification.window.winblend = 0;
+      settings = {
+        progress.display.progressIcon.pattern = "meter";
+        notification.window.winblend = 0;
+      };
     };
     hardtime = {
       enable = true;

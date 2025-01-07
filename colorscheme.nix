@@ -5,7 +5,15 @@
   };
 
   colorschemes = {
-    tokyonight.enable = true;
+    tokyonight.enable = false;
+    monokai-pro = {
+      enable = true;
+      settings = {
+        terminal_colors = false;
+        devicons = true;
+      };
+    };
+
     catppuccin = {
       enable = false;
       settings = {

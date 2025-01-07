@@ -33,10 +33,7 @@
       settings.browser = "firefox";
     };
 
-    openscad = {
-      enable = true;
-      keymaps.enable = true;
-    };
+    openscad.enable = true;
 
     lspsaga = {
       enable = true;
