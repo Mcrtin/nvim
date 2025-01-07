@@ -6,7 +6,10 @@
     rustaceanvim = {
       enable = true;
       settings = {
-        server.default_settings.rust-analyzer.check.command = "clippy";
+        tools.enable_clippy = true;
+        server.default_settings = {
+          inlayHints.lifetimeElisionHints.enable = "always";
+        };
       };
     };
 
@@ -39,10 +42,6 @@
       enable = true;
       lightbulb.virtualText = false;
       symbolInWinbar.enable = false;
-      outline = {
-        autoClose = true;
-        closeAfterJump = true;
-      };
     };
     lsp-lines.enable = true;
     compiler.enable = true;
@@ -66,10 +65,6 @@
     enable = true;
     inlayHints = true;
     keymaps = {
-      diagnostic = {
-        "<leader>j" = "goto_next";
-        "<leader>k" = "goto_prev";
-      };
       lspBuf = {
         K = "hover";
         gD = "references";
@@ -82,11 +77,6 @@
           key = "<leader>ca";
           action = "<cmd>Lspsaga code_action<cr>";
           options.desc = "Code Action";
-        }
-        {
-          key = "<leader>co";
-          action = "<cmd>Lspsaga outline<cr>";
-          options.desc = "Outline";
         }
         {
           key = "<leader>cr";
@@ -176,6 +166,11 @@
     eslint_d
     python312Packages.demjson3
     checkstyle
+
+    #rust
+    cargo
+    rustc
+    rustfmt
   ];
 
   plugins.lint = {
@@ -202,7 +197,7 @@
         lua = ["stylua"];
         nix = ["alejandra"];
         markdown = ["prettierd"];
-        rust = ["rustfmt"];
+        # rust = ["rustfmt"];
         sh = ["shfmt"];
       };
       notify_on_error = true;

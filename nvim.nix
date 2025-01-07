@@ -25,6 +25,7 @@
       standalonePlugins = [
         "overseer.nvim"
         "openscad.nvim"
+        "onedark.nvim"
         "nvim-treesitter"
       ];
     };

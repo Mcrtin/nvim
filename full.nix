@@ -15,7 +15,6 @@
     };
 
     wakatime.enable = true; # https://wakatime.com/settings/api-key
-    rainbow-delimiters.enable = true;
     presence-nvim.enable = true; # Discord
   };
 }
