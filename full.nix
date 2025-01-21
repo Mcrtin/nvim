@@ -4,13 +4,8 @@
   ];
 
   plugins = {
-    fidget = {
-      enable = true;
-      settings = {
-        progress.display.progressIcon.pattern = "meter";
-        notification.window.winblend = 0;
-      };
-    };
+    fidget.enable = true;
+
     hardtime = {
       enable = true;
       settings.disable_mouse = false;

@@ -5,9 +5,10 @@
   };
 
   colorschemes = {
+    kanagawa.enable = true;
     tokyonight.enable = false;
     monokai-pro = {
-      enable = true;
+      enable = false;
       settings = {
         terminal_colors = false;
         devicons = true;
