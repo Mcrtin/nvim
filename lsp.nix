@@ -185,6 +185,43 @@
   plugins.conform-nvim = {
     enable = true;
     settings = {
+      format_on_save =
+        # Lua
+        ''
+          function(bufnr)
+          if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+              return
+          end
+
+          if slow_format_filetypes[vim.bo[bufnr].filetype] then
+              return
+          end
+
+          local function on_format(err)
+            if err and err:match("timeout$") then
+                slow_format_filetypes[vim.bo[bufnr].filetype] = true
+            end
+          end
+
+          return { timeout_ms = 200, lsp_format = "fallback" }, on_format
+           end
+        '';
+
+      format_after_save =
+        # Lua
+        ''
+            function(bufnr)
+            if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+                return
+            end
+
+            if not slow_format_filetypes[vim.bo[bufnr].filetype] then
+                return
+            end
+
+            return { lsp_format = "fallback" }
+          end
+        '';
       formatters_by_ft = {
         html = ["prettierd"];
         css = ["prettierd"];
@@ -198,10 +235,6 @@
         sh = ["shfmt"];
       };
       notify_on_error = true;
-      format_on_save = {
-        timeout_ms = 500;
-        lsp_format = "fallback";
-      };
     };
   };
   keymaps = [
@@ -230,24 +263,28 @@
 
     {
       mode = "n";
-      key = "<leader>cp";
-      action = "<cmd>MarkdownPreview<cr>";
-      options.desc = "Markdown Preview";
-    }
-
-    {
-      mode = "n";
       key = "<leader>ll";
       action = "<cmd>lua require('lsp_lines').toggle()<CR>";
       options.desc = "Toggle lsp lines";
     }
+
     {
       mode = "n";
       key = "<leader>cf";
-      action = "<cmd>lua require('conform').format()<cr>";
+      action = "<cmd>lua vim.b.disable_autoformat = not vim.b.disable_autoformat; if not vim.b.disable_autoformat then require('conform').format() end<cr>";
       options = {
         silent = true;
-        desc = "Format";
+        desc = "Toggle autoformat for buffer";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>cF";
+      action = "<cmd>lua vim.g.disable_autoformat = not vim.g.disable_autoformat; if not vim.g.disable_autoformat then require('conform').format() end<cr>";
+      options = {
+        silent = true;
+        desc = "Toggle autoformat globally";
       };
     }
   ];

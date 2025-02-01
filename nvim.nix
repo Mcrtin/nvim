@@ -2,7 +2,6 @@
   imports = [
     ./generalKeybinds.nix
     ./session.nix
-    ./alpha.nix
     ./cmp.nix
     ./treesitter.nix
     ./keyhints.nix
@@ -175,7 +174,9 @@
     illuminate = {
       enable = true;
       underCursor = false;
+      largeFileCutoff = 5000;
       filetypesDenylist = [
+        "xxd"
         "DressingSelect"
         "Outline"
         "TelescopePrompt"
@@ -228,7 +229,7 @@
   keymaps = [
     # AutoSave
     {
-      key = "<leader>a";
+      key = "<leader>ba";
       action = "<cmd>ASToggle<CR>";
       options.desc = "Toggle auto save";
     }
