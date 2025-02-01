@@ -1,17 +1,4 @@
 {pkgs, ...}: {
-  plugins.oil = {
-    enable = false;
-    settings = {
-      deleteToTrash = true;
-      float = {
-        padding = 2;
-        maxWidth = 0; # ''math.ceil(vim.o.lines * 0.8 - 4)'';
-        maxHeight = 0; # ''math.ceil(vim.o.columns * 0.8)'';
-        winOptions.winblend = 0;
-      };
-    };
-  };
-
   plugins.yazi = {
     enable = true;
     settings = {
