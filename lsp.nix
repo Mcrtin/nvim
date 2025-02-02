@@ -1,7 +1,5 @@
 {pkgs, ...}: {
   plugins = {
-    nix.enable = true;
-
     parinfer-rust.enable = true;
     rustaceanvim = {
       enable = true;
@@ -30,7 +28,7 @@
     render-markdown.enable = true;
     markdown-preview = {
       enable = true;
-      settings.browser = "firefox";
+      settings.browser = "xdg-open";
     };
 
     openscad.enable = true;
@@ -109,7 +107,10 @@
       html.enable = true; # HTML
       pyright.enable = true; # Python
       marksman.enable = true; # Markdown
-      nil_ls.enable = true; # Nix
+      nixd = {
+        enable = true;
+        settings.formatting.command = ["alejandra"];
+      };
       bashls.enable = true; # Bash
       zls.enable = true;
       clangd.enable = true;
@@ -148,32 +149,26 @@
     biber
 
     #formatter
-    alejandra
     black
     prettierd
     google-java-format
-    stylua
-    rustfmt
     shfmt
 
     #linter
-    statix
     selene
     python312Packages.flake8
     eslint_d
     python312Packages.demjson3
     checkstyle
-
-    #rust
-    cargo
-    rustc
-    rustfmt
   ];
-
+  extraConfigLua = ''    vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+    	callback = function()
+    		require("lint").try_lint()
+    	end,
+    })'';
   plugins.lint = {
     enable = true;
     lintersByFt = {
-      nix = ["statix"];
       lua = ["selene"];
       python = ["flake8"];
       javascript = ["eslint_d"];
@@ -189,37 +184,11 @@
         # Lua
         ''
           function(bufnr)
-          if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-              return
-          end
-
-          if slow_format_filetypes[vim.bo[bufnr].filetype] then
-              return
-          end
-
-          local function on_format(err)
-            if err and err:match("timeout$") then
-                slow_format_filetypes[vim.bo[bufnr].filetype] = true
-            end
-          end
-
-          return { timeout_ms = 200, lsp_format = "fallback" }, on_format
-           end
-        '';
-
-      format_after_save =
-        # Lua
-        ''
-            function(bufnr)
+            -- Disable with a global or buffer-local variable
             if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-                return
+              return
             end
-
-            if not slow_format_filetypes[vim.bo[bufnr].filetype] then
-                return
-            end
-
-            return { lsp_format = "fallback" }
+            return { timeout_ms = 500, lsp_format = "fallback" }
           end
         '';
       formatters_by_ft = {
@@ -228,15 +197,13 @@
         javascript = ["prettierd"];
         java = ["google-java-format"];
         python = ["black"];
-        lua = ["stylua"];
-        nix = ["alejandra"];
-        markdown = ["prettierd"];
-        # rust = ["rustfmt"];
         sh = ["shfmt"];
+        "*" = ["injected"];
       };
       notify_on_error = true;
     };
   };
+
   keymaps = [
     # compiler
     {

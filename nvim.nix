@@ -94,19 +94,13 @@
           # lua
           ''
             function(buf)
-                local m = vim.api.nvim_get_mode().mode
-
-                if
-                    m == 'i' then
+                if vim.api.nvim_get_mode().mode == 'i' then
                     return false
                 end
 
-                local fn = vim.fn
                 local utils = require("auto-save.utils.data")
-                if
-                  fn.getbufvar(buf, "&modifiable") == 1 and
-                  utils.not_in(fn.getbufvar(buf, "&filetype"), {"TelescopePrompt"}) then
-                return true;
+                if utils.not_in(vim.fn.getbufvar(buf, "&filetype"), {"TelescopePrompt"}) then
+                  return true;
                 end
                 return false -- can't save
               end
@@ -115,6 +109,7 @@
     };
 
     nvim-ufo = {
+      # TODO: not really needed
       enable = true;
       settings.provider_selector =
         # lua
@@ -129,6 +124,7 @@
       enable = true;
       timeout = 1000;
       render = "minimal";
+      backgroundColour = "#000000";
     };
 
     trouble = {
@@ -141,20 +137,7 @@
       settings.modes.char.enabled = false;
     };
 
-    noice = {
-      enable = true;
-      settings = {
-        notify.enabled = true;
-        lsp = {
-          override = {
-            "vim.lsp.util.convert_input_to_markdown_lines" = true;
-            "vim.lsp.util.stylize_markdown" = true;
-            "cmp.entry.get_documentation" = true;
-          };
-          progress.enabled = false;
-        };
-      };
-    };
+    noice.enable = true;
 
     todo-comments = {
       enable = true;

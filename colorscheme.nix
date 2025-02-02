@@ -5,7 +5,8 @@
   };
 
   colorschemes = {
-    kanagawa.enable = true;
+    gruvbox.enable = true;
+    kanagawa.enable = false;
     tokyonight.enable = false;
     monokai-pro = {
       enable = false;

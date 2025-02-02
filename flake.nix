@@ -38,6 +38,7 @@
         fullNvim = nixvim'.makeNixvimWithModule fullModule;
         liteNvim = nixvim'.makeNixvimWithModule liteModule;
       in {
+        formatter = pkgs.alejandra;
         checks = {
           # Run `nix flake check .` to verify that your config is not broken
           default = nixvimLib.check.mkTestDerivationFromNixvimModule fullModule;
