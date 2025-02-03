@@ -14,6 +14,7 @@
     ./git.nix
   ];
 
+  luaLoader.enable = true;
   performance = {
     byteCompileLua = {
       enable = true;
