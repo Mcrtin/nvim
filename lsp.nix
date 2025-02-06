@@ -109,7 +109,16 @@
       marksman.enable = true; # Markdown
       nixd = {
         enable = true;
-        settings.formatting.command = ["alejandra"];
+        settings = {
+          formatting.command = ["alejandra"];
+          nixpkgs.expr = "import <nixpkgs> {}";
+          options = {
+            nixos.expr = "(builtins.getFlake (\"git+file://\" + toString ./.)).nixosConfigurations.$${builtins.getEnv \"USER\"}.options";
+            # home_manager.expr = "(builtins.getFlake (\"git+file://\" + toString ./.)).homeConfigurations.\"martin@nixos\".options";
+            nvim.expr = "(builtins.getFlake (\"git+file://\" + toString ./.)).packages.${pkgs.system}.full.options";
+
+          };
+        };
       };
       bashls.enable = true; # Bash
       zls.enable = true;
