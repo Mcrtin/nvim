@@ -1,7 +1,5 @@
 {
-  autoGroups = {
-    alpha_on_empty = {};
-  };
+  autoGroups.alpha_on_empty = {};
   autoCmd = [
     {
       event = "User";

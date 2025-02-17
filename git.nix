@@ -1,8 +1,7 @@
 {
   plugins = {
     fugitive.enable = true;
-    committia.enable = true;
-    octo.enable = true;
+    octo.enable = true; # Add keybinds
     gitsigns = {
       enable = true;
       settings.current_line_blame = false;
@@ -13,7 +12,7 @@
     {
       mode = "n";
       key = "<leader>gd";
-      action = "<cmd>lua require('gitsigns').diffthis()<CR>";
+      action = "<cmd>Gvdiffsplit<CR>";
       options.desc = "Git Diff";
     }
     {
@@ -25,7 +24,7 @@
     {
       mode = "n";
       key = "<leader>gb";
-      action = "<cmd>lua require('gitsigns').blame_line()<CR>";
+      action = "<cmd>Git blame<CR>";
       options.desc = "Git Blame";
     }
     {
@@ -37,7 +36,7 @@
     {
       mode = "n";
       key = "<leader>ghp";
-      action = "<cmd>lua require('gitsigns').preview_hunk()<CR>";
+      action = "<cmd>Gitsigns preview_hunk_inline<CR>";
       options.desc = "Git Hunk Preview";
     }
     {

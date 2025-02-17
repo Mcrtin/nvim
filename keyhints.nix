@@ -16,7 +16,7 @@
       }
       {
         __unkeyed-1 = "<leader>l";
-        desc = "+lsp";
+        desc = "+lsp"; #TODO: remove
       }
       {
         __unkeyed-1 = "<leader>i";

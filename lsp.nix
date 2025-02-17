@@ -115,6 +115,7 @@
       html.enable = true; # HTML
       pyright.enable = true; # Python
       marksman.enable = true; # Markdown
+      nil_ls.enable = true;
       nixd = {
         enable = true;
         settings = {

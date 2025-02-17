@@ -202,11 +202,6 @@
       };
     };
 
-    project-nvim = {
-      enable = true;
-      enableTelescope = true;
-    };
-
     toggleterm = {
       enable = true;
       settings = {
