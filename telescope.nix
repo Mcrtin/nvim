@@ -3,9 +3,7 @@
     enable = true;
 
     extensions = {
-      fzf-native = {
-        enable = true;
-      };
+      fzf-native.enable = true;
     };
     keymaps = {
       "<leader><space>" = {

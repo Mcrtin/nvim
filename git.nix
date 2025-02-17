@@ -54,6 +54,18 @@
     }
     {
       mode = "n";
+      key = "]g";
+      action = "<cmd>Gitsigns next_hunk<CR>";
+      options.desc = "Git jump to next hunk";
+    }
+    {
+      mode = "n";
+      key = "[g";
+      action = "<cmd>Gitsigns prev_hunk<CR>";
+      options.desc = "Git jump to prev hunk";
+    }
+    {
+      mode = "n";
       key = "<leader>ghu";
       action = "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>";
       options.desc = "Git Hunk Undo Stage";

@@ -2,7 +2,6 @@
   imports = [
     ./generalKeybinds.nix
     ./session.nix
-    ./cmp.nix
     ./treesitter.nix
     ./keyhints.nix
     ./explorers.nix
@@ -76,8 +75,6 @@
     indent-blankline.enable = true;
     intellitab.enable = true;
     lastplace.enable = true;
-    hex.enable = true;
-    telescope.enable = true;
     colorizer.enable = true; # color colorcodes
     nvim-autopairs.enable = true;
     web-devicons.enable = true;
@@ -133,12 +130,29 @@
       settings.autoclose = true;
     };
 
+    blink-cmp = {
+      enable = true;
+      settings = {
+        signature.enabled = true;
+        completion = {
+          ghost_text.enabled = true;
+          documentation = {
+            auto_show = true;
+            auto_show_delay_ms = 500;
+          };
+        };
+      };
+    };
+
     flash = {
       enable = true;
       settings.modes.char.enabled = false;
     };
 
-    noice.enable = true;
+    noice = {
+      enable = true;
+      settings.presets.inc_rename = true;
+    };
 
     todo-comments = {
       enable = true;
@@ -160,7 +174,6 @@
       underCursor = false;
       largeFileCutoff = 5000;
       filetypesDenylist = [
-        "xxd"
         "DressingSelect"
         "Outline"
         "TelescopePrompt"
