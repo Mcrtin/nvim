@@ -81,7 +81,21 @@
 
     lualine = {
       enable = true;
-      settings.options.globalstatus = true;
+      settings = {
+        options.globalstatus = true;
+        sections.lualine_a = [
+          "mode"
+          {
+            __unkeyed-1 = {
+              __raw = ''                function()
+                                          local reg = vim.fn.reg_recording()
+                                          if reg == "" then return "" end -- not recording
+                                          return "recording to " .. reg
+                                        end'';
+            };
+          }
+        ];
+      };
     };
 
     auto-save = {
@@ -151,7 +165,15 @@
 
     noice = {
       enable = true;
-      settings.presets.inc_rename = true;
+      settings = {
+        presets.inc_rename = true;
+        lsp = {
+          override = {
+            "vim.lsp.util.convert_input_to_markdown_lines" = true;
+            "vim.lsp.util.stylize_markdown" = true;
+          };
+        };
+      };
     };
 
     todo-comments = {

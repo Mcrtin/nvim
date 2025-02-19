@@ -143,6 +143,9 @@
     };
   };
   extraPackages = with pkgs; [
+    # for render-markdown
+    python312Packages.pylatexenc
+
     # for compiler
     gcc
     binutils
