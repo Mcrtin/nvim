@@ -11,6 +11,7 @@
     ./colorscheme.nix
     ./telescope.nix
     ./git.nix
+    ./bundles.nix
   ];
 
   luaLoader.enable = true;
@@ -22,6 +23,7 @@
     combinePlugins = {
       enable = true;
       standalonePlugins = [
+        "mini.nvim"
         "overseer.nvim"
         "openscad.nvim"
         "onedark.nvim"
@@ -72,7 +74,6 @@
     comment.enable = true;
     sleuth.enable = true;
     nvim-surround.enable = true;
-    indent-blankline.enable = true;
     intellitab.enable = true;
     lastplace.enable = true;
     colorizer.enable = true; # color colorcodes

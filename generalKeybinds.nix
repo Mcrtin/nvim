@@ -166,7 +166,7 @@
     {
       mode = "n";
       key = "<leader>mw";
-      action = ":lua ToggleWrap()<cr>";
+      action = "<cmd>set wrap!<cr>";
       options = {
         silent = true;
         desc = "Toggle Line Wrap";
