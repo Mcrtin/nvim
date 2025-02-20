@@ -23,6 +23,7 @@
     combinePlugins = {
       enable = true;
       standalonePlugins = [
+        "blink.cmp"
         "mini.nvim"
         "overseer.nvim"
         "openscad.nvim"
@@ -135,9 +136,11 @@
 
     notify = {
       enable = true;
-      timeout = 1000;
-      render = "minimal";
-      backgroundColour = "#000000";
+      settings = {
+        timeout = 1000;
+        render = "minimal";
+        background_colour = "#000000";
+      };
     };
 
     trouble = {
