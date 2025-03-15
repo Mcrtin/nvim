@@ -1,11 +1,7 @@
 {
   plugins = {
-    dap-ui = {
-      enable = true;
-      settings.floating.mappings = {
-        close = ["<ESC>" "q"];
-      };
-    };
+    dap-ui.enable = true;
+
     dap-virtual-text.enable = true;
     dap = {
       enable = true;

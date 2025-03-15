@@ -1,7 +1,4 @@
-{pkgs, ...}: {
-  extraPackages = with pkgs; [
-    imagemagick
-  ];
+{
   plugins.snacks = {
     enable = true;
     settings = {
@@ -10,7 +7,6 @@
         only_scope = true;
         animate.enabled = false;
       };
-      image.enabled = true;
       bigfile.enabled = true;
       quickfile.enabled = true;
       words.enabled = true;
@@ -25,7 +21,7 @@
       bracketed = {};
       diff = {};
       jump = {};
-      operators = {};
+      operators.exchange.prefix = "gX";
 
       # basics = {
       #   options = false;

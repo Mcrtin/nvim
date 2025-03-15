@@ -16,7 +16,7 @@
     vimtex.enable = true;
 
     nvim-jdtls = {
-      enable = true;
+      enable = false;
       data = "~/.cache/jdtls/workspace";
       configuration = "~/.cache/jdtls/config";
       settings = {
@@ -106,9 +106,7 @@
     servers = {
       typos_lsp = {
         enable = true;
-        extraOptions = {
-          init_options.diagnosticSeverity = "Hint";
-        };
+        extraOptions.init_options.diagnosticSeverity = "Hint";
       };
       ts_ls.enable = true; # TS/JS
       cssls.enable = true; # CSS
@@ -116,6 +114,7 @@
       pyright.enable = true; # Python
       marksman.enable = true; # Markdown
       nil_ls.enable = true;
+      jdtls.enable = true;
       nixd = {
         enable = true;
         settings = {
@@ -142,6 +141,7 @@
       };
     };
   };
+
   extraPackages = with pkgs; [
     # for render-markdown
     python312Packages.pylatexenc
@@ -180,7 +180,6 @@
     python312Packages.flake8
     eslint_d
     python312Packages.demjson3
-    checkstyle
   ];
   extraConfigLua = ''    vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     	callback = function()
@@ -194,7 +193,6 @@
       python = ["flake8"];
       javascript = ["eslint_d"];
       json = ["jsonlint"];
-      java = ["checkstyle"];
     };
   };
 
@@ -216,7 +214,6 @@
         html = ["prettierd"];
         css = ["prettierd"];
         javascript = ["prettierd"];
-        java = ["google-java-format"];
         python = ["black"];
         sh = ["shfmt"];
         "*" = ["injected"];
