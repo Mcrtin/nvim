@@ -13,7 +13,10 @@
       };
     };
 
-    vimtex.enable = true;
+    vimtex = {
+      enable = true;
+      texlivePackage = pkgs.texlive.combined.scheme-full;
+    };
 
     nvim-jdtls = {
       enable = false;
@@ -132,7 +135,6 @@
       clangd.enable = true;
       cmake.enable = true;
       yamlls.enable = true; # YAML
-      texlab.enable = true; #Tex
 
       lua_ls = {
         # Lua

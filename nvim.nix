@@ -148,6 +148,7 @@
       settings.autoclose = true;
     };
 
+    # colorful-menu.enable = true; don't know how to use raw ._.
     blink-cmp = {
       enable = true;
       settings = {
@@ -210,22 +211,6 @@
         "Spectre"
         "reason"
       ];
-    };
-
-    harpoon = {
-      enable = true;
-      enableTelescope = true;
-      keymapsSilent = true;
-      keymaps = {
-        addFile = "<leader>ha";
-        toggleQuickMenu = "<C-h>";
-        navFile = {
-          "1" = "<leader>hj";
-          "2" = "<leader>hk";
-          "3" = "<leader>hl";
-          "4" = "<leader>hm";
-        };
-      };
     };
 
     toggleterm = {
