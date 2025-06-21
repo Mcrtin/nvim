@@ -8,7 +8,7 @@
       settings = {
         tools.enable_clippy = true;
         server.default_settings = {
-          inlayHints.lifetimeElisionHints.enable = "always";
+          rust-analyzer.inlayHints.lifetimeElisionHints.enable = "always";
         };
       };
     };
@@ -201,17 +201,19 @@
   plugins.conform-nvim = {
     enable = true;
     settings = {
-      format_on_save =
-        # Lua
-        ''
-          function(bufnr)
-            -- Disable with a global or buffer-local variable
-            if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-              return
-            end
-            return { timeout_ms = 500, lsp_format = "fallback" }
-          end
-        '';
+      format_on_save = 
+        {timeout_ms = 500;
+        lsp_format = "fallback";};
+        # # Lua
+        # ''
+        #   function(bufnr)
+        #     -- Disable with a global or buffer-local variable
+        #     if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+        #       return
+        #     end
+        #     return { timeout_ms = 500, lsp_format = "fallback" }
+        #   end
+        # '';
       formatters_by_ft = {
         html = ["prettierd"];
         css = ["prettierd"];
@@ -255,24 +257,24 @@
       options.desc = "Toggle lsp lines";
     }
 
-    {
-      mode = "n";
-      key = "<leader>cf";
-      action = "<cmd>lua vim.b.disable_autoformat = not vim.b.disable_autoformat; if not vim.b.disable_autoformat then require('conform').format() end<cr>";
-      options = {
-        silent = true;
-        desc = "Toggle autoformat for buffer";
-      };
-    }
-
-    {
-      mode = "n";
-      key = "<leader>cF";
-      action = "<cmd>lua vim.g.disable_autoformat = not vim.g.disable_autoformat; if not vim.g.disable_autoformat then require('conform').format() end<cr>";
-      options = {
-        silent = true;
-        desc = "Toggle autoformat globally";
-      };
-    }
+    # {
+    #   mode = "n";
+    #   key = "<leader>cf";
+    #   action = "<cmd>lua vim.b.disable_autoformat = not vim.b.disable_autoformat; if not vim.b.disable_autoformat then require('conform').format() end<cr>";
+    #   options = {
+    #     silent = true;
+    #     desc = "Toggle autoformat for buffer";
+    #   };
+    # }
+    #
+    # {
+    #   mode = "n";
+    #   key = "<leader>cF";
+    #   action = "<cmd>lua vim.g.disable_autoformat = not vim.g.disable_autoformat; if not vim.g.disable_autoformat then require('conform').format() end<cr>";
+    #   options = {
+    #     silent = true;
+    #     desc = "Toggle autoformat globally";
+    #   };
+    # }
   ];
 }
