@@ -69,7 +69,7 @@
   globals.mapleader = " ";
   clipboard.providers.wl-copy.enable = true;
 
-  diagnostics.update_in_insert = false;
+  diagnostic.settings.update_in_insert = false;
 
   plugins = {
     comment.enable = true;

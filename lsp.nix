@@ -18,10 +18,8 @@
       texlivePackage = pkgs.texlive.combined.scheme-full;
     };
 
-    nvim-jdtls = {
+    jdtls = {
       enable = false;
-      data = "~/.cache/jdtls/workspace";
-      configuration = "~/.cache/jdtls/config";
       settings = {
         java = {
           signatureHelp = true;
