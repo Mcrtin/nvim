@@ -25,7 +25,6 @@
       standalonePlugins = [
         "blink.cmp"
         "mini.nvim"
-        "overseer.nvim"
         "openscad.nvim"
         "onedark.nvim"
         "nvim-treesitter"
@@ -89,7 +88,8 @@
           "mode"
           {
             __unkeyed-1 = {
-              __raw = ''                function()
+              __raw = ''
+                function()
                                           local reg = vim.fn.reg_recording()
                                           if reg == "" then return "" end -- not recording
                                           return "recording to " .. reg
@@ -294,12 +294,20 @@
     # flash
     {
       key = "s";
-      mode = ["n" "x" "o"];
+      mode = [
+        "n"
+        "x"
+        "o"
+      ];
       action = "<cmd>lua require(\"flash\").jump()<cr>";
     }
     {
       key = "<leader>S";
-      mode = ["n" "x" "o"];
+      mode = [
+        "n"
+        "x"
+        "o"
+      ];
       action = "<cmd>lua require(\"flash\").treesitter()<cr>";
     }
     {
@@ -309,7 +317,10 @@
     }
     {
       key = "<leader>R";
-      mode = ["x" "o"];
+      mode = [
+        "x"
+        "o"
+      ];
       action = "<cmd>lua require(\"flash\").treesitter_search()<cr>";
     }
     {

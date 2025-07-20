@@ -1,7 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}:
+{
   plugins = {
     inc-rename.enable = true;
-
     parinfer-rust.enable = true;
     rustaceanvim = {
       enable = true;
@@ -37,8 +41,6 @@
       symbolInWinbar.enable = false;
     };
     lsp-lines.enable = true;
-    compiler.enable = true;
-    overseer.enable = true;
 
     # TODO: Add keybinds
     refactoring = {
@@ -114,7 +116,7 @@
       nixd = {
         enable = true;
         settings = {
-          formatting.command = ["alejandra"];
+          formatting.command = [ "nix fmt" ];
           nixpkgs.expr = "import <nixpkgs> {}";
           options = {
             nixos.expr = "(builtins.getFlake (\"git+file://\" + toString ./.)).nixosConfigurations.$${builtins.getEnv \"USER\"}.options";
@@ -141,55 +143,16 @@
     # for render-markdown
     python312Packages.pylatexenc
 
-    # for compiler
-    gcc
-    binutils
-    mono
-    openjdk
-    dart
-    kotlin
-    elixir
-    nodejs
-    typescript
-    go
-    nasm
-    python3
-    ruby
-    perl
-    lua
-    swift
-    flutter
-
     # for vimtex
     biber
 
     #formatter
-    alejandra
     black
     prettierd
     google-java-format
+    #for bashls
     shfmt
-
-    #linter
-    selene
-    python312Packages.flake8
-    eslint_d
-    python312Packages.demjson3
   ];
-  extraConfigLua = ''    vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-    	callback = function()
-    		require("lint").try_lint()
-    	end,
-    })'';
-  plugins.lint = {
-    enable = true;
-    lintersByFt = {
-      lua = ["selene"];
-      python = ["flake8"];
-      javascript = ["eslint_d"];
-      json = ["jsonlint"];
-    };
-  };
 
   plugins.conform-nvim = {
     enable = true;
@@ -206,40 +169,22 @@
           end
         '';
       formatters_by_ft = {
-        html = ["prettierd"];
-        css = ["prettierd"];
-        javascript = ["prettierd"];
-        python = ["black"];
-        sh = ["shfmt"];
+        html = [ "prettierd" ];
+        css = [ "prettierd" ];
+        javascript = [ "prettierd" ];
+        python = [ "black" ];
+        formatters = {
+          black.command = lib.getExe pkgs.black;
+          prettierd.command = lib.getExe pkgs.prettierd;
+          google-java-format.command = lib.getExe pkgs.google-java-format;
+        };
       };
+
       notify_on_error = true;
     };
   };
 
   keymaps = [
-    # compiler
-    {
-      mode = "n";
-      key = "<leader>cc";
-      action = "<cmd>CompilerOpen<cr>";
-      options.silent = true;
-      options.desc = "Open compiler";
-    }
-    {
-      mode = "n";
-      key = "<leader>cC";
-      action = "<cmd>CompilerStop<cr><cmd>CompilerRedo<cr>";
-      options.silent = true;
-      options.desc = "Redo last compiler option";
-    }
-    {
-      mode = "n";
-      key = "<leader>c<C-c>";
-      action = "<cmd>CompilerToggleResults<cr>";
-      options.silent = true;
-      options.desc = "Toggle compiler results";
-    }
-
     {
       mode = "n";
       key = "<leader>ll";
