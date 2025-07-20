@@ -5,12 +5,7 @@
     parinfer-rust.enable = true;
     rustaceanvim = {
       enable = true;
-      settings = {
-        tools.enable_clippy = true;
-        server.default_settings = {
-          rust-analyzer.inlayHints.lifetimeElisionHints.enable = "always";
-        };
-      };
+      settings.tools.enable_clippy = true;
     };
 
     vimtex = {
@@ -216,7 +211,6 @@
         javascript = ["prettierd"];
         python = ["black"];
         sh = ["shfmt"];
-        "*" = ["injected"];
       };
       notify_on_error = true;
     };
@@ -253,24 +247,24 @@
       options.desc = "Toggle lsp lines";
     }
 
-    # {
-    #   mode = "n";
-    #   key = "<leader>cf";
-    #   action = "<cmd>lua vim.b.disable_autoformat = not vim.b.disable_autoformat; if not vim.b.disable_autoformat then require('conform').format() end<cr>";
-    #   options = {
-    #     silent = true;
-    #     desc = "Toggle autoformat for buffer";
-    #   };
-    # }
-    #
-    # {
-    #   mode = "n";
-    #   key = "<leader>cF";
-    #   action = "<cmd>lua vim.g.disable_autoformat = not vim.g.disable_autoformat; if not vim.g.disable_autoformat then require('conform').format() end<cr>";
-    #   options = {
-    #     silent = true;
-    #     desc = "Toggle autoformat globally";
-    #   };
-    # }
+    {
+      mode = "n";
+      key = "<leader>cf";
+      action = "<cmd>lua vim.b.disable_autoformat = not vim.b.disable_autoformat; if not vim.b.disable_autoformat then require('conform').format() end<cr>";
+      options = {
+        silent = true;
+        desc = "Toggle autoformat for buffer";
+      };
+    }
+
+    {
+      mode = "n";
+      key = "<leader>cF";
+      action = "<cmd>lua vim.g.disable_autoformat = not vim.g.disable_autoformat; if not vim.g.disable_autoformat then require('conform').format() end<cr>";
+      options = {
+        silent = true;
+        desc = "Toggle autoformat globally";
+      };
+    }
   ];
 }
