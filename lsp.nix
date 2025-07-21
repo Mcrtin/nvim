@@ -130,12 +130,7 @@
       clangd.enable = true;
       cmake.enable = true;
       yamlls.enable = true; # YAML
-
-      lua_ls = {
-        # Lua
-        enable = true;
-        settings.telemetry.enable = false;
-      };
+      lua_ls.enable = true; # Lua 
     };
   };
 
