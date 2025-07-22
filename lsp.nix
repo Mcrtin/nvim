@@ -131,7 +131,7 @@
       clangd.enable = true;
       cmake.enable = true;
       yamlls.enable = true; # YAML
-      lua_ls.enable = true; # Lua 
+      lua_ls.enable = true; # Lua
     };
   };
 
@@ -142,12 +142,10 @@
     # for vimtex
     biber
 
-    #formatter
-    black
-    prettierd
-    google-java-format
     #for bashls
     shfmt
+    #for rust
+    rustfmt
   ];
 
   plugins.conform-nvim = {
