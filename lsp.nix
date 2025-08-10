@@ -130,8 +130,8 @@
         enable = true;
         installCargo = true;
         installRustc = true;
-        installRustFmt = true;
-        settings.check.command = lib.getExe pkgs.clippy;
+        installRustfmt = true;
+        settings.check.command = "clippy";
       };
       bashls.enable = true; # Bash
       zls.enable = true;
@@ -152,7 +152,7 @@
     #for bashls
     shfmt
     #for rust
-    rustfmt
+    clippy
   ];
 
   plugins.conform-nvim = {
