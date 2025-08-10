@@ -7,10 +7,10 @@
   plugins = {
     inc-rename.enable = true;
     parinfer-rust.enable = true;
-    rustaceanvim = {
-      enable = true;
-      settings.tools.enable_clippy = true;
-    };
+    # rustaceanvim = {
+    #   enable = true;
+    #   # settings.tools.enable_clippy = true;
+    # };
 
     vimtex = {
       enable = true;
@@ -125,6 +125,13 @@
             nvim.expr = "(builtins.getFlake (\"git+file://\" + toString ./.)).packages.${pkgs.system}.full.options";
           };
         };
+      };
+      rust_analyzer = {
+        enable = true;
+        installCargo = true;
+        installRustc = true;
+        installRustFmt = true;
+        settings.check.command = lib.getExe pkgs.clippy;
       };
       bashls.enable = true; # Bash
       zls.enable = true;
