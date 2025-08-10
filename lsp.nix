@@ -7,7 +7,10 @@
   plugins = {
     inc-rename.enable = true;
     parinfer-rust.enable = true;
-    rustaceanvim.enable = true;
+    # rustaceanvim = {
+    #   enable = true;
+    #   # settings.tools.enable_clippy = true;
+    # };
 
     vimtex = {
       enable = true;
@@ -123,13 +126,13 @@
           };
         };
       };
-      # rust_analyzer = {
-      #   enable = true;
-      #   installCargo = true;
-      #   installRustc = true;
-      #   installRustfmt = true;
-      #   settings.check.command = "clippy";
-      # };
+      rust_analyzer = {
+        enable = true;
+        installCargo = true;
+        installRustc = true;
+        installRustfmt = true;
+        settings.check.command = "clippy";
+      };
       bashls.enable = true; # Bash
       zls.enable = true;
       clangd.enable = true;
@@ -149,7 +152,7 @@
     #for bashls
     shfmt
     #for rust
-    rustfmt
+    clippy
   ];
 
   plugins.conform-nvim = {

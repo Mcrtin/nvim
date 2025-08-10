@@ -30,13 +30,13 @@
           }
         ];
       };
-    };
-    neotest = {
-      enable = true;
-      adapters = {
-        java.enable = true;
-      };
-    };
+    }; # TODO: idk how to get it working
+    # neotest = {
+    #   enable = true;
+    #   adapters = {
+    #     java.enable = true;
+    #   };
+    # };
   };
 
   keymaps = [
@@ -282,7 +282,10 @@
       };
     }
     {
-      mode = ["n" "v"];
+      mode = [
+        "n"
+        "v"
+      ];
       key = "<leader>de";
       action = "<cmd>lua require('dapui').eval()<cr>";
       options = {

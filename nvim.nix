@@ -23,7 +23,7 @@
     combinePlugins = {
       enable = true;
       standalonePlugins = [
-        "blink.cmp"
+        "conform.nvim"
         "mini.nvim"
         "openscad.nvim"
         "onedark.nvim"
