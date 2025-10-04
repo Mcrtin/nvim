@@ -40,8 +40,11 @@
 
     lspsaga = {
       enable = true;
-      lightbulb.virtualText = false;
-      symbolInWinbar.enable = false;
+      settings = {
+        lightbulb.virtual_text = false;
+        symbol_in_winbar.enable = false;
+        implement.enable = false;
+      };
     };
     lsp-lines.enable = true;
 
