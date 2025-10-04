@@ -24,6 +24,9 @@
           signatureHelp = true;
           completion = true;
         };
+        root_dir = {
+          __raw = "require('jdtls.setup').find_root({'settings.gradle', 'settings.gradle.kts', 'pom.xml', 'build.gradle', 'build.gradle.kts', 'mvnw', 'gradlew', '.git'})";
+        };
       };
     };
 
@@ -128,9 +131,9 @@
       };
       rust_analyzer = {
         enable = true;
-        installCargo = true;
-        installRustc = true;
-        installRustfmt = true;
+        installCargo = false;
+        installRustc = false;
+        installRustfmt = false;
         settings.check.command = "clippy";
       };
       bashls.enable = true; # Bash
@@ -151,8 +154,6 @@
 
     #for bashls
     shfmt
-    #for rust
-    clippy
   ];
 
   plugins.conform-nvim = {
