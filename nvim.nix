@@ -79,6 +79,8 @@
     colorizer.enable = true; # color colorcodes
     nvim-autopairs.enable = true;
     web-devicons.enable = true;
+    grug-far.enable = true;
+    diffview.enable = true;
 
     lualine = {
       enable = true;
@@ -90,10 +92,10 @@
             __unkeyed-1 = {
               __raw = ''
                 function()
-                                          local reg = vim.fn.reg_recording()
-                                          if reg == "" then return "" end -- not recording
-                                          return "recording to " .. reg
-                                        end'';
+                    local reg = vim.fn.reg_recording()
+                    if reg == "" then return "" end -- not recording
+                    return "recording to " .. reg
+                  end'';
             };
           }
         ];
