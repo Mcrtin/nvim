@@ -1,4 +1,8 @@
+{ pkgs, ... }:
 {
+  extraPackages = with pkgs; [
+    vscode-extensions.vadimcn.vscode-lldb
+  ];
   plugins = {
     dap-ui.enable = true;
 
@@ -30,13 +34,14 @@
           }
         ];
       };
-    }; # TODO: idk how to get it working
-    # neotest = {
-    #   enable = true;
-    #   adapters = {
-    #     java.enable = true;
-    #   };
-    # };
+    };
+    neotest = {
+      enable = true;
+      settings.adapters = [
+        "require('rustaceanvim.neotest')"
+
+      ];
+    };
   };
 
   keymaps = [
