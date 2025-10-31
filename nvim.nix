@@ -200,19 +200,21 @@
 
     illuminate = {
       enable = true;
-      underCursor = false;
-      largeFileCutoff = 5000;
-      filetypesDenylist = [
-        "DressingSelect"
-        "Outline"
-        "TelescopePrompt"
-        "alpha"
-        "harpoon"
-        "toggleterm"
-        "neo-tree"
-        "Spectre"
-        "reason"
-      ];
+      settings = {
+        underCursor = false;
+        largeFileCutoff = 5000;
+        filetypesDenylist = [
+          "DressingSelect"
+          "Outline"
+          "TelescopePrompt"
+          "alpha"
+          "harpoon"
+          "toggleterm"
+          "neo-tree"
+          "Spectre"
+          "reason"
+        ];
+      };
     };
 
     toggleterm = {
