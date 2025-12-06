@@ -5,6 +5,12 @@
 }:
 {
   plugins = {
+    # image = {
+    #   enable = true;
+    #   settings = {
+    #     backend = "sixel";
+    #   };
+    # };
     inc-rename.enable = true;
     parinfer-rust.enable = true;
     rustaceanvim = {
@@ -28,6 +34,7 @@
         };
       };
     };
+    gradle_ls.enable = true;
 
     render-markdown.enable = true;
     markdown-preview = {
@@ -169,6 +176,7 @@
         html = [ "prettierd" ];
         css = [ "prettierd" ];
         javascript = [ "prettierd" ];
+        markdown = [ "prettierd" ];
         python = [ "black" ];
         formatters = {
           black.command = lib.getExe pkgs.black;
