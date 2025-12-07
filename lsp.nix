@@ -34,7 +34,6 @@
         };
       };
     };
-    gradle_ls.enable = true;
 
     render-markdown.enable = true;
     markdown-preview = {
