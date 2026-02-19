@@ -15,6 +15,7 @@
     parinfer-rust.enable = true;
     rustaceanvim = {
       enable = true;
+      settings.tools.enable_clippy = false;
     };
 
     vimtex = {
@@ -117,6 +118,7 @@
         enable = true;
         extraOptions.init_options.diagnosticSeverity = "Hint";
       };
+      tombi.enable = true; # toml
       ts_ls.enable = true; # TS/JS
       cssls.enable = true; # CSS
       html.enable = true; # HTML
@@ -133,7 +135,7 @@
             #TODO: make nixos a git repo
             # nixos.expr = "(builtins.getFlake (\"git+file://\" + toString ./.)).nixosConfigurations.$${builtins.getEnv \"USER\"}.options";
             # home_manager.expr = "(builtins.getFlake (\"git+file://\" + toString ./.)).homeConfigurations.\"martin@nixos\".options";
-            nvim.expr = "(builtins.getFlake (\"git+file://\" + toString ./.)).packages.${pkgs.system}.full.options";
+            nvim.expr = "(builtins.getFlake (\"git+file://\" + toString ./.)).packages.${pkgs.stdenv.hostPlatform.system}.full.options";
           };
         };
       };

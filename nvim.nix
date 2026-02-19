@@ -66,6 +66,7 @@
   };
 
   globals.mapleader = " ";
+  globals.maplocalleader = ",";
   clipboard.providers.wl-copy.enable = true;
 
   diagnostic.settings.update_in_insert = false;
