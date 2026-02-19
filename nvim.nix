@@ -23,6 +23,8 @@
     combinePlugins = {
       enable = true;
       standalonePlugins = [
+        "snacks.nvim"
+        "refactoring.nvim"
         "conform.nvim"
         "mini.nvim"
         "openscad.nvim"
