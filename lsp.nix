@@ -20,7 +20,7 @@
 
     vimtex = {
       enable = true;
-      texlivePackage = pkgs.texlive.combined.scheme-full;
+      # texlivePackage = pkgs.texlive.combined.scheme-full;
     };
 
     jdtls = {
@@ -140,7 +140,10 @@
         };
       };
       bashls.enable = true; # Bash
-      zls.enable = true;
+      zls = {
+        enable = true;
+        settings.enable_build_on_save = true;
+      };
       clangd.enable = true;
       cmake.enable = true;
       yamlls.enable = true; # YAML
@@ -157,6 +160,11 @@
 
     #for bashls
     shfmt
+
+    # formatters
+    black
+    prettierd
+    google-java-format
   ];
 
   plugins.conform-nvim = {
