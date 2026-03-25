@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   extraPackages = with pkgs; [
     vscode-extensions.vadimcn.vscode-lldb
   ];
@@ -39,7 +38,6 @@
       enable = true;
       settings.adapters = [
         "require('rustaceanvim.neotest')"
-
       ];
     };
   };

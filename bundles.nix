@@ -16,11 +16,11 @@
   plugins.mini = {
     enable = true;
     modules = {
-      icons = { };
-      map = { };
-      bracketed = { };
-      diff = { };
-      jump = { };
+      icons = {};
+      map = {};
+      bracketed = {};
+      diff = {};
+      jump = {};
       operators.exchange.prefix = "gX";
 
       # basics = {
@@ -54,13 +54,13 @@
       options.desc = "Prev Reference";
     }
     {
-      mode = [ "n" ];
+      mode = ["n"];
       key = "mt";
       action = "lua MiniMap.toggle()<cr>";
       options.desc = "Toggle Minimap";
     }
     {
-      mode = [ "n" ];
+      mode = ["n"];
       key = "<leader>gD";
       action = "lua MiniDiff.toggle_overlay()";
       options.desc = "Toggle inline diff";
