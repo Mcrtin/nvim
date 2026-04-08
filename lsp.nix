@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   plugins = {
     # image = {
     #   enable = true;
@@ -117,6 +118,7 @@
         enable = true;
         extraOptions.init_options.diagnosticSeverity = "Hint";
       };
+      arduino_language_server.enable = true;
       tombi.enable = true; # toml
       ts_ls.enable = true; # TS/JS
       cssls.enable = true; # CSS
@@ -128,7 +130,7 @@
       nixd = {
         enable = true;
         settings = {
-          formatting.command = ["nix fmt"];
+          formatting.command = [ "nix fmt" ];
           nixpkgs.expr = "import <nixpkgs> {}";
           options = {
             #TODO: make nixos a git repo
@@ -181,11 +183,11 @@
           end
         '';
       formatters_by_ft = {
-        html = ["prettierd"];
-        css = ["prettierd"];
-        javascript = ["prettierd"];
-        markdown = ["prettierd"];
-        python = ["black"];
+        html = [ "prettierd" ];
+        css = [ "prettierd" ];
+        javascript = [ "prettierd" ];
+        markdown = [ "prettierd" ];
+        python = [ "black" ];
         formatters = {
           black.command = lib.getExe pkgs.black;
           prettierd.command = lib.getExe pkgs.prettierd;
