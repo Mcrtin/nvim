@@ -30,6 +30,7 @@
         "openscad.nvim"
         "onedark.nvim"
         "nvim-treesitter"
+        "async.nvim"
       ];
     };
   };
