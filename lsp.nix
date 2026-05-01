@@ -55,10 +55,10 @@
     lsp-lines.enable = true;
 
     # TODO: Add keybinds
-    refactoring = {
-      enable = true;
-      enableTelescope = true;
-    };
+    # refactoring = {
+    #   enable = true;
+    #   enableTelescope = true;
+    # };
   };
 
   autoCmd = [
