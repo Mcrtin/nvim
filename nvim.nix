@@ -31,6 +31,7 @@
         "onedark.nvim"
         "nvim-treesitter"
         "async.nvim"
+        "promise-async"
       ];
     };
   };
