@@ -42,8 +42,6 @@
       settings.browser = "xdg-open";
     };
 
-    openscad.enable = true;
-
     lspsaga = {
       enable = true;
       settings = {

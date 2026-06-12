@@ -8,6 +8,5 @@
     fidget.enable = false;
 
     wakatime.enable = true; # https://wakatime.com/settings/api-key
-    presence.enable = true; # Discord
   };
 }
