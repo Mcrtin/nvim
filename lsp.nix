@@ -7,7 +7,10 @@
   plugins = {
     image.enable = true;
     inc-rename.enable = true;
-    openscad.enable = true;
+    openscad = {
+      enable = true;
+      settings.default_mappings = true;
+    };
 
     parinfer-rust.enable = true;
     rustaceanvim = {
