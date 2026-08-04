@@ -5,23 +5,16 @@
 }:
 {
   plugins = {
-    # image = {
-    #   enable = true;
-    #   settings = {
-    #     backend = "sixel";
-    #   };
-    # };
+    image.enable = true;
     inc-rename.enable = true;
+    openscad.enable = true;
+
     parinfer-rust.enable = true;
     rustaceanvim = {
       enable = true;
-      settings.tools.enable_clippy = false;
     };
 
-    vimtex = {
-      enable = true;
-      # texlivePackage = pkgs.texlive.combined.scheme-full;
-    };
+    vimtex.enable = true;
 
     jdtls = {
       enable = false;
@@ -51,12 +44,6 @@
       };
     };
     lsp-lines.enable = true;
-
-    # TODO: Add keybinds
-    # refactoring = {
-    #   enable = true;
-    #   enableTelescope = true;
-    # };
   };
 
   autoCmd = [
@@ -112,11 +99,6 @@
     };
 
     servers = {
-      typos_lsp = {
-        enable = true;
-        extraOptions.init_options.diagnosticSeverity = "Hint";
-      };
-      arduino_language_server.enable = true;
       tombi.enable = true; # toml
       ts_ls.enable = true; # TS/JS
       cssls.enable = true; # CSS
