@@ -7,12 +7,13 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = {
-    nixvim,
-    flake-parts,
-    ...
-  } @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    {
+      nixvim,
+      flake-parts,
+      ...
+    }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -20,38 +21,31 @@
         "aarch64-darwin"
       ];
 
-      perSystem = {
-        pkgs,
-        system,
-        ...
-      }: let
-        nixvimLib = nixvim.lib.${system};
-        nixvim' = nixvim.legacyPackages.${system};
-        fullModule = {
-          inherit pkgs;
-          module = import ./full.nix;
-        };
-        liteModule = {
-          inherit pkgs;
-          module = import ./lite.nix;
-        };
-        fullNvim = nixvim'.makeNixvimWithModule fullModule;
-        liteNvim = nixvim'.makeNixvimWithModule liteModule;
-      in {
-        formatter = pkgs.alejandra;
-        checks = {
-          # Run `nix flake check .` to verify that your config is not broken
-          default = nixvimLib.check.mkTestDerivationFromNixvimModule fullModule;
-          full = nixvimLib.check.mkTestDerivationFromNixvimModule fullModule;
-          lite = nixvimLib.check.mkTestDerivationFromNixvimModule liteModule;
-        };
+      perSystem =
+        {
+          pkgs,
+          system,
+          ...
+        }:
+        let
+          nixvimLib = nixvim.lib.${system};
+          nixvim' = nixvim.legacyPackages.${system};
+          module = {
+            inherit pkgs;
+            module = import ./nvim.nix;
+          };
+        in
+        {
+          formatter = pkgs.alejandra;
+          checks = {
+            # Run `nix flake check .` to verify that your config is not broken
+            default = nixvimLib.check.mkTestDerivationFromNixvimModule module;
+          };
 
-        packages = {
-          # Lets you run `nix run .` to start nixvim
-          default = fullNvim;
-          full = fullNvim;
-          lite = liteNvim;
+          packages = {
+            # Lets you run `nix run .` to start nixvim
+            default = nixvim'.makeNixvimWithModule module;
+          };
         };
-      };
     };
 }

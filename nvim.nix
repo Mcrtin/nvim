@@ -7,8 +7,7 @@
     ./explorers.nix
     ./bufferline.nix
     ./lsp.nix
-    ./debug.nix
-    ./colorscheme.nix
+    # ./debug.nix
     ./telescope.nix
     ./git.nix
     ./bundles.nix
@@ -23,23 +22,19 @@
     combinePlugins = {
       enable = true;
       standalonePlugins = [
-        "snacks.nvim"
-        "refactoring.nvim"
-        "conform.nvim"
-        "mini.nvim"
-        "openscad.nvim"
-        "onedark.nvim"
-        "nvim-treesitter"
-        "async.nvim"
-        "promise-async"
+        "snacks.nvim" # conflicts with treesitter (markdown queries)
+        "conform.nvim" # conflicts with blink-cmp
+        "mini.nvim" # declares :Git twice in help doc
+        "openscad.nvim" # only works in standalone mode
       ];
     };
   };
 
+  colorschemes.gruvbox.enable = true;
+
   opts = {
     number = true;
     relativenumber = true;
-    signcolumn = "yes";
 
     ignorecase = true;
     smartcase = true;
@@ -64,7 +59,6 @@
     undofile = true;
 
     foldlevelstart = 99;
-    # foldcolumn = "1";
     foldlevel = 99;
     foldenable = true;
   };
@@ -81,7 +75,11 @@
     nvim-surround.enable = true;
     intellitab.enable = true;
     lastplace.enable = true;
-    colorizer.enable = true; # color colorcodes
+    colorizer = {
+      # color colorcodes
+      enable = true;
+      settings.options.parsers.names.enable = false;
+    };
     nvim-autopairs.enable = true;
     web-devicons.enable = true;
     grug-far.enable = true;
@@ -127,18 +125,6 @@
               end
           '';
       };
-    };
-
-    nvim-ufo = {
-      # TODO: not really needed
-      enable = true;
-      settings.provider_selector =
-        # lua
-        ''
-          function(bufnr, filetype, buftype)
-              return {'treesitter', 'indent'}
-          end
-        '';
     };
 
     notify = {

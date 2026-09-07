@@ -21,7 +21,7 @@
     {
       mode = "n";
       key = "<leader>q";
-      action = "<cmd>Bdelete<cr>";
+      action = "<cmd>bdelete<cr>";
       options.desc = "Delete buffer";
     }
     {

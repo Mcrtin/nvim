@@ -1,7 +1,7 @@
 {
   plugins.persistence.enable = true;
   keymaps = [
-    # Session
+    # load session for current dir
     {
       mode = "n";
       key = "<leader>ss";
